@@ -15,7 +15,6 @@
 		DFD3444820C2F73E0040FC7A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DFD3444620C2F73E0040FC7A /* LaunchScreen.storyboard */; };
 		DFD3445020C2F8EB0040FC7A /* ViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD3444F20C2F8EB0040FC7A /* ViewController2.swift */; };
 		DFD3445720C33F0B0040FC7A /* background iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = DFD3445520C33F0B0040FC7A /* background iPad.png */; };
-		DFD3445820C33F0B0040FC7A /* background iPhone.png in Resources */ = {isa = PBXBuildFile; fileRef = DFD3445620C33F0B0040FC7A /* background iPhone.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,7 +28,6 @@
 		DFD3444920C2F73F0040FC7A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DFD3444F20C2F8EB0040FC7A /* ViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController2.swift; sourceTree = "<group>"; };
 		DFD3445520C33F0B0040FC7A /* background iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background iPad.png"; sourceTree = "<group>"; };
-		DFD3445620C33F0B0040FC7A /* background iPhone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background iPhone.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,7 +85,6 @@
 			isa = PBXGroup;
 			children = (
 				DFD3445520C33F0B0040FC7A /* background iPad.png */,
-				DFD3445620C33F0B0040FC7A /* background iPhone.png */,
 			);
 			path = "Support files";
 			sourceTree = "<group>";
@@ -153,7 +150,6 @@
 				DFD3445720C33F0B0040FC7A /* background iPad.png in Resources */,
 				DFD3444820C2F73E0040FC7A /* LaunchScreen.storyboard in Resources */,
 				DFD3444520C2F73E0040FC7A /* Assets.xcassets in Resources */,
-				DFD3445820C33F0B0040FC7A /* background iPhone.png in Resources */,
 				DFD3444020C2F73D0040FC7A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

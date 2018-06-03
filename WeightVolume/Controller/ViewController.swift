@@ -8,22 +8,48 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextFieldDelegate {
 
+    //declare variable here:
+    @IBOutlet weak var stackView: UIStackView!
+    
+    @IBOutlet var messageTextFields: [UITextField]!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        //set yourself as delegate of all text fields
+        for tf in messageTextFields{
+            tf.delegate = self
+        }
+        
+        //set gesture:
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(stackViewTapped))
+        stackView.addGestureRecognizer(tapGesture)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    @objc func stackViewTapped() {
+        for tf in messageTextFields{
+            if tf.isEditing == true {
+                tf.endEditing(true)
+            }
+        }
+    }
 
     @IBAction func infoButtonPressed(_ sender: UIBarButtonItem) {
         performSegue(withIdentifier: "goToInfo", sender: self)
     }
     
+    @IBAction func resetButtonPressed(_ sender: UIButton) {
+        for tf in messageTextFields {
+            tf.text = ""
+        }
+    }
     
 }
 
