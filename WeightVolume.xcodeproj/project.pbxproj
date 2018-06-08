@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DF569A1E20CA243E00AB9AE6 /* WVFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF569A1D20CA243E00AB9AE6 /* WVFunctions.swift */; };
 		DFD3443B20C2F73D0040FC7A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD3443A20C2F73D0040FC7A /* AppDelegate.swift */; };
 		DFD3443D20C2F73D0040FC7A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD3443C20C2F73D0040FC7A /* ViewController.swift */; };
 		DFD3444020C2F73D0040FC7A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DFD3443E20C2F73D0040FC7A /* Main.storyboard */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DF569A1D20CA243E00AB9AE6 /* WVFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WVFunctions.swift; sourceTree = "<group>"; };
 		DFD3443720C2F73D0040FC7A /* WeightVolume.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeightVolume.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFD3443A20C2F73D0040FC7A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DFD3443C20C2F73D0040FC7A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -61,6 +63,7 @@
 			isa = PBXGroup;
 			children = (
 				DFD3443A20C2F73D0040FC7A /* AppDelegate.swift */,
+				DF569A1D20CA243E00AB9AE6 /* WVFunctions.swift */,
 				DFD3445120C2F9020040FC7A /* Controller */,
 				DFD3443E20C2F73D0040FC7A /* Main.storyboard */,
 				DFD3444420C2F73E0040FC7A /* Assets.xcassets */,
@@ -162,6 +165,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DFD3443D20C2F73D0040FC7A /* ViewController.swift in Sources */,
+				DF569A1E20CA243E00AB9AE6 /* WVFunctions.swift in Sources */,
 				DFD3445020C2F8EB0040FC7A /* ViewController2.swift in Sources */,
 				DFD3443B20C2F73D0040FC7A /* AppDelegate.swift in Sources */,
 				DFD3444320C2F73D0040FC7A /* WeightVolume.xcdatamodeld in Sources */,
