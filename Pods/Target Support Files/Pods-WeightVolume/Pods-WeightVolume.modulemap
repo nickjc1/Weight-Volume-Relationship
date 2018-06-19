@@ -1,0 +1,6 @@
+framework module Pods_WeightVolume {
+  umbrella header "Pods-WeightVolume-umbrella.h"
+
+  export *
+  module * { export * }
+}

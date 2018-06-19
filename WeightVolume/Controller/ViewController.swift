@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import RealmSwift
 
 class ViewController: UIViewController, UITextFieldDelegate {
 
     // MARK: - declare variable here
+    let realm = try! Realm()
     
     @IBOutlet weak var stackView: UIStackView!
     
@@ -45,11 +47,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
         unitWeightWaterPicker.isHidden = true
         
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     // MARK: - tapping stackview to hide keyboard
     
@@ -62,9 +59,14 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     // MARK: - button pressed
-
-    @IBAction func infoButtonPressed(_ sender: UIBarButtonItem) {
+    
+    @IBAction func infoButtonPressed(_ sender: UIButton) {
         performSegue(withIdentifier: "goToInfo", sender: self)
+    }
+    
+    @IBAction func historyButtonPressed(_ sender: UIBarButtonItem) {
+        
+        performSegue(withIdentifier: "goToHistory", sender: self)
     }
     
     @IBAction func resetButtonPressed(_ sender: UIButton) {
@@ -103,6 +105,36 @@ class ViewController: UIViewController, UITextFieldDelegate {
         messageTextFields[6].text = String(solvingProblem.n)
         messageTextFields[7].text = String(solvingProblem.S)
         messageTextFields[8].text = String(solvingProblem.rsat)
+        
+        //create an instance of the Realm database object
+        let result = ResultDetail()
+        result.e = solvingProblem.e
+        result.Gs = solvingProblem.Gs
+        result.n = solvingProblem.n
+        result.r = solvingProblem.r
+        result.rd = solvingProblem.rd
+        result.rsat = solvingProblem.rsat
+        result.rw = solvingProblem.rw
+        result.S = solvingProblem.S
+        result.w = solvingProblem.w
+        
+        result.createdTime = Date()
+        
+        // MARK: save data by summit button pressed
+        
+        do {
+            try realm.write {
+                realm.add(result)
+            }
+        } catch {
+            print("error saving result into database \(error)")
+        }
+        
+        for tf in messageTextFields {
+            if tf.text == "-1.0" {
+                tf.text = "can not be solved"
+            }
+        }
         
     }
     

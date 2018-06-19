@@ -7,7 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3C9EEF45C4D85D491362910C /* Pods_WeightVolume.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C13CA06F26D686FD85C333B6 /* Pods_WeightVolume.framework */; };
+		DF37FBD020D83F8B00A6C85B /* ResultDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF37FBCF20D83F8B00A6C85B /* ResultDetail.swift */; };
+		DF37FBD720D8495C00A6C85B /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF37FBD620D8495C00A6C85B /* HistoryViewController.swift */; };
 		DF569A1E20CA243E00AB9AE6 /* WVFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF569A1D20CA243E00AB9AE6 /* WVFunctions.swift */; };
+		DFC7B29620D9880800A2439B /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC7B29520D9880800A2439B /* DetailViewController.swift */; };
 		DFD3443B20C2F73D0040FC7A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD3443A20C2F73D0040FC7A /* AppDelegate.swift */; };
 		DFD3443D20C2F73D0040FC7A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD3443C20C2F73D0040FC7A /* ViewController.swift */; };
 		DFD3444020C2F73D0040FC7A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DFD3443E20C2F73D0040FC7A /* Main.storyboard */; };
@@ -19,7 +23,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0FF8D32F1EDB919E5DC7AC38 /* Pods-WeightVolume.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeightVolume.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WeightVolume/Pods-WeightVolume.debug.xcconfig"; sourceTree = "<group>"; };
+		4169DE9B455B378186EB1FCE /* Pods-WeightVolume.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeightVolume.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeightVolume/Pods-WeightVolume.release.xcconfig"; sourceTree = "<group>"; };
+		C13CA06F26D686FD85C333B6 /* Pods_WeightVolume.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeightVolume.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DF37FBCF20D83F8B00A6C85B /* ResultDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultDetail.swift; sourceTree = "<group>"; };
+		DF37FBD620D8495C00A6C85B /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		DF569A1D20CA243E00AB9AE6 /* WVFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WVFunctions.swift; sourceTree = "<group>"; };
+		DFC7B29520D9880800A2439B /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		DFD3443720C2F73D0040FC7A /* WeightVolume.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeightVolume.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFD3443A20C2F73D0040FC7A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DFD3443C20C2F73D0040FC7A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -37,17 +47,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C9EEF45C4D85D491362910C /* Pods_WeightVolume.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A5DB059B4893AB828AA9F82E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0FF8D32F1EDB919E5DC7AC38 /* Pods-WeightVolume.debug.xcconfig */,
+				4169DE9B455B378186EB1FCE /* Pods-WeightVolume.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		DF37FBD320D83FAE00A6C85B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DF37FBCF20D83F8B00A6C85B /* ResultDetail.swift */,
+			);
+			name = Model;
+			path = ..;
+			sourceTree = "<group>";
+		};
 		DFD3442E20C2F73D0040FC7A = {
 			isa = PBXGroup;
 			children = (
 				DFD3443920C2F73D0040FC7A /* WeightVolume */,
 				DFD3443820C2F73D0040FC7A /* Products */,
+				A5DB059B4893AB828AA9F82E /* Pods */,
+				ED56B751C1C96EC9CFA89178 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -62,6 +93,7 @@
 		DFD3443920C2F73D0040FC7A /* WeightVolume */ = {
 			isa = PBXGroup;
 			children = (
+				DF37FBD320D83FAE00A6C85B /* Model */,
 				DFD3443A20C2F73D0040FC7A /* AppDelegate.swift */,
 				DF569A1D20CA243E00AB9AE6 /* WVFunctions.swift */,
 				DFD3445120C2F9020040FC7A /* Controller */,
@@ -80,6 +112,8 @@
 			children = (
 				DFD3443C20C2F73D0040FC7A /* ViewController.swift */,
 				DFD3444F20C2F8EB0040FC7A /* ViewController2.swift */,
+				DF37FBD620D8495C00A6C85B /* HistoryViewController.swift */,
+				DFC7B29520D9880800A2439B /* DetailViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -92,6 +126,14 @@
 			path = "Support files";
 			sourceTree = "<group>";
 		};
+		ED56B751C1C96EC9CFA89178 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C13CA06F26D686FD85C333B6 /* Pods_WeightVolume.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -99,9 +141,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DFD3444C20C2F73F0040FC7A /* Build configuration list for PBXNativeTarget "WeightVolume" */;
 			buildPhases = (
+				9D7FA4907B317352D78B7DAA /* [CP] Check Pods Manifest.lock */,
 				DFD3443320C2F73D0040FC7A /* Sources */,
 				DFD3443420C2F73D0040FC7A /* Frameworks */,
 				DFD3443520C2F73D0040FC7A /* Resources */,
+				5645D9A69334FD830DD4CD4C /* [CP] Embed Pods Frameworks */,
+				0C0C985EAFB088FA7E4FB2C4 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -159,16 +204,77 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0C0C985EAFB088FA7E4FB2C4 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WeightVolume/Pods-WeightVolume-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5645D9A69334FD830DD4CD4C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-WeightVolume/Pods-WeightVolume-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SwipeCellKit/SwipeCellKit.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwipeCellKit.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WeightVolume/Pods-WeightVolume-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9D7FA4907B317352D78B7DAA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WeightVolume-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		DFD3443320C2F73D0040FC7A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				DFD3443D20C2F73D0040FC7A /* ViewController.swift in Sources */,
+				DF37FBD020D83F8B00A6C85B /* ResultDetail.swift in Sources */,
 				DF569A1E20CA243E00AB9AE6 /* WVFunctions.swift in Sources */,
 				DFD3445020C2F8EB0040FC7A /* ViewController2.swift in Sources */,
 				DFD3443B20C2F73D0040FC7A /* AppDelegate.swift in Sources */,
+				DF37FBD720D8495C00A6C85B /* HistoryViewController.swift in Sources */,
 				DFD3444320C2F73D0040FC7A /* WeightVolume.xcdatamodeld in Sources */,
+				DFC7B29620D9880800A2439B /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,15 +416,13 @@
 		};
 		DFD3444D20C2F73F0040FC7A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0FF8D32F1EDB919E5DC7AC38 /* Pods-WeightVolume.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Y6RK3XXLPA;
 				INFOPLIST_FILE = WeightVolume/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nickjc1.WeightVolume;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -328,15 +432,13 @@
 		};
 		DFD3444E20C2F73F0040FC7A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4169DE9B455B378186EB1FCE /* Pods-WeightVolume.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Y6RK3XXLPA;
 				INFOPLIST_FILE = WeightVolume/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nickjc1.WeightVolume;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
