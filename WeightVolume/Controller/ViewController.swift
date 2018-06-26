@@ -22,8 +22,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     let unitList = ["kN/m3", "lb/ft3"]
     @IBOutlet var messageTextFields: [UITextField]!
     
-    // MARK: - viewDidLoad() and didReceiveMemoryWarning()
-    
+    // MARK: - viewDidLoad()
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -49,7 +48,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     // MARK: - tapping stackview to hide keyboard
-    
     @objc func stackViewTapped() {
         for tf in messageTextFields{
             if tf.isEditing == true {
@@ -65,80 +63,108 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func historyButtonPressed(_ sender: UIBarButtonItem) {
-        
         performSegue(withIdentifier: "goToHistory", sender: self)
     }
     
     @IBAction func resetButtonPressed(_ sender: UIButton) {
         for tf in messageTextFields {
             tf.text = ""
+            tf.backgroundColor = UIColor.white
         }
         messageTextFields[3].text = String(unitWeightWater[0])
         unit.text = unitList[0]
     }
     
-    // MARK: - calculating
+    // MARK: - textFieldDidBeginEditing() to reset the background color of the textfield to white
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        for tf in messageTextFields {
+            tf.backgroundColor = UIColor.white
+        }
+    }
+}
+
+ // MARK: - calculating
+
+extension ViewController {
     
     @IBAction func submitButtonPressed(_ sender: UIButton) {
-        //Convert String to double
-        var data = [Double](repeating: 0, count: messageTextFields.count)
+        //first check if all textfields are blank.
+        //if so, nothing will happen, else start calculating and save results
+        var textFieldsAreEmpty = true
         for i in 0..<messageTextFields.count {
-            if messageTextFields[i].text == "" {
-                data[i] = -1
+            if messageTextFields[i].text?.isEmpty == false && i != 3 {
+                textFieldsAreEmpty = textFieldsAreEmpty && false
+                break
+            }
+        }
+        if !textFieldsAreEmpty {
+            //Convert String to double
+            var data = [Double](repeating: 0, count: messageTextFields.count)
+            for i in 0..<messageTextFields.count {
+                if messageTextFields[i].text == "" {
+                    data[i] = -1
+                } else {
+                    data[i] = Double(messageTextFields[i].text!)!
+                }
+            }
+            
+            //create a instance of WVFunctions and start calculating:
+            let solvingProblem = WVFunctions(w: data[0], r: data[1], Gs: data[2], rw: data[3], e: data[5], n: data[6], S: data[7], rd: data[4], rsat: data[8])
+            
+            var count = 0
+            
+            while count < 100 && !solvingProblem.areAllSolved() {
+                solvingProblem.calculating()
+                count += 1
+            }
+            
+            //make precision of 2 digits after float point
+            solvingProblem.roundTo2DigitalPrecisionAndCheckIsNaN()
+            
+            messageTextFields[0].text = String(solvingProblem.w)
+            messageTextFields[1].text = String(solvingProblem.r)
+            messageTextFields[2].text = String(solvingProblem.Gs)
+            messageTextFields[3].text = String(solvingProblem.rw)
+            messageTextFields[4].text = String(solvingProblem.rd)
+            messageTextFields[5].text = String(solvingProblem.e)
+            messageTextFields[6].text = String(solvingProblem.n)
+            messageTextFields[7].text = String(solvingProblem.S)
+            messageTextFields[8].text = String(solvingProblem.rsat)
+            
+            // MARK: - if all solved, create an instance of the Realm database object and save data by summit button pressed; else mark unsolved variables textfield into yellow
+            if solvingProblem.areAllSolved() {
+                let result = ResultDetail()
+                result.e = solvingProblem.e
+                result.Gs = solvingProblem.Gs
+                result.n = solvingProblem.n
+                result.r = solvingProblem.r
+                result.rd = solvingProblem.rd
+                result.rsat = solvingProblem.rsat
+                result.rw = solvingProblem.rw
+                result.S = solvingProblem.S
+                result.w = solvingProblem.w
+                
+                result.createdTime = Date()
+                
+                do {
+                    try realm.write {
+                        realm.add(result)
+                    }
+                } catch {
+                    print("error saving result into database \(error)")
+                }
             } else {
-                data[i] = Double(messageTextFields[i].text!)!
+                //if any field did not get the result, turns it to yellow
+                for tf in messageTextFields {
+                    if tf.text == "-1.0" {
+                        tf.backgroundColor = UIColor.yellow
+                        tf.text = ""
+                    }
+                }
             }
         }
-        
-        let solvingProblem = WVFunctions(w: data[0], r: data[1], Gs: data[2], rw: data[3], e: data[5], n: data[6], S: data[7], rd: data[4], rsat: data[8])
-        
-        for _ in 1...10 {
-            solvingProblem.startCalculating()
-        }
-        
-        messageTextFields[0].text = String(solvingProblem.w)
-        messageTextFields[1].text = String(solvingProblem.r)
-        messageTextFields[2].text = String(solvingProblem.Gs)
-        messageTextFields[3].text = String(solvingProblem.rw)
-        messageTextFields[4].text = String(solvingProblem.rd)
-        messageTextFields[5].text = String(solvingProblem.e)
-        messageTextFields[6].text = String(solvingProblem.n)
-        messageTextFields[7].text = String(solvingProblem.S)
-        messageTextFields[8].text = String(solvingProblem.rsat)
-        
-        //create an instance of the Realm database object
-        let result = ResultDetail()
-        result.e = solvingProblem.e
-        result.Gs = solvingProblem.Gs
-        result.n = solvingProblem.n
-        result.r = solvingProblem.r
-        result.rd = solvingProblem.rd
-        result.rsat = solvingProblem.rsat
-        result.rw = solvingProblem.rw
-        result.S = solvingProblem.S
-        result.w = solvingProblem.w
-        
-        result.createdTime = Date()
-        
-        // MARK: save data by summit button pressed
-        
-        do {
-            try realm.write {
-                realm.add(result)
-            }
-        } catch {
-            print("error saving result into database \(error)")
-        }
-        
-        for tf in messageTextFields {
-            if tf.text == "-1.0" {
-                tf.text = "can not be solved"
-            }
-        }
-        
     }
-    
-    
 }
 
 // MARK: - picker view delegate and datasource method

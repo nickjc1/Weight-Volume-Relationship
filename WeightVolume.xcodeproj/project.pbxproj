@@ -18,7 +18,7 @@
 		DFD3444320C2F73D0040FC7A /* WeightVolume.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DFD3444120C2F73D0040FC7A /* WeightVolume.xcdatamodeld */; };
 		DFD3444520C2F73E0040FC7A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DFD3444420C2F73E0040FC7A /* Assets.xcassets */; };
 		DFD3444820C2F73E0040FC7A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DFD3444620C2F73E0040FC7A /* LaunchScreen.storyboard */; };
-		DFD3445020C2F8EB0040FC7A /* ViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD3444F20C2F8EB0040FC7A /* ViewController2.swift */; };
+		DFD3445020C2F8EB0040FC7A /* InformationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD3444F20C2F8EB0040FC7A /* InformationController.swift */; };
 		DFD3445720C33F0B0040FC7A /* background iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = DFD3445520C33F0B0040FC7A /* background iPad.png */; };
 /* End PBXBuildFile section */
 
@@ -38,7 +38,7 @@
 		DFD3444420C2F73E0040FC7A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DFD3444720C2F73E0040FC7A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DFD3444920C2F73F0040FC7A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DFD3444F20C2F8EB0040FC7A /* ViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController2.swift; sourceTree = "<group>"; };
+		DFD3444F20C2F8EB0040FC7A /* InformationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationController.swift; sourceTree = "<group>"; };
 		DFD3445520C33F0B0040FC7A /* background iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background iPad.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -111,9 +111,9 @@
 			isa = PBXGroup;
 			children = (
 				DFD3443C20C2F73D0040FC7A /* ViewController.swift */,
-				DFD3444F20C2F8EB0040FC7A /* ViewController2.swift */,
 				DF37FBD620D8495C00A6C85B /* HistoryViewController.swift */,
 				DFC7B29520D9880800A2439B /* DetailViewController.swift */,
+				DFD3444F20C2F8EB0040FC7A /* InformationController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -270,7 +270,7 @@
 				DFD3443D20C2F73D0040FC7A /* ViewController.swift in Sources */,
 				DF37FBD020D83F8B00A6C85B /* ResultDetail.swift in Sources */,
 				DF569A1E20CA243E00AB9AE6 /* WVFunctions.swift in Sources */,
-				DFD3445020C2F8EB0040FC7A /* ViewController2.swift in Sources */,
+				DFD3445020C2F8EB0040FC7A /* InformationController.swift in Sources */,
 				DFD3443B20C2F73D0040FC7A /* AppDelegate.swift in Sources */,
 				DF37FBD720D8495C00A6C85B /* HistoryViewController.swift in Sources */,
 				DFD3444320C2F73D0040FC7A /* WeightVolume.xcdatamodeld in Sources */,
@@ -422,7 +422,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Y6RK3XXLPA;
 				INFOPLIST_FILE = WeightVolume/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.nickjc1.WeightVolume;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -438,7 +441,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Y6RK3XXLPA;
 				INFOPLIST_FILE = WeightVolume/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.nickjc1.WeightVolume;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

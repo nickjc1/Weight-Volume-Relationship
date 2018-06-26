@@ -34,9 +34,9 @@ class HistoryViewController: UIViewController {
 
 }
 
-// MARK: - tableView delegate, datasource and swipetableviewcell delegate
+// MARK: - tableView delegate, datasource
 
-extension HistoryViewController: UITableViewDelegate, UITableViewDataSource, SwipeTableViewCellDelegate {
+extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -70,9 +70,13 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource, Swi
             destinationVC.delegate = self
             
             destinationVC.resultDetail = realm.objects(ResultDetail.self)[selectedCell]
-            
         }
     }
+}
+
+// MARK: - delete data by swipe tableview cell delegate
+
+extension HistoryViewController: SwipeTableViewCellDelegate {
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
         
@@ -104,5 +108,4 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource, Swi
             print("error deleting data \(error)")
         }
     }
-
 }
