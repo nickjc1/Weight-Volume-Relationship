@@ -60,6 +60,20 @@ class WVFunctions {
             if e != -1 && S != -1 && rd != -1 {
                 return (e*S*rw)/((1 + e)*rd)
             }
+            //from rsat set
+            //wsat
+            if Gs != -1 && rsat != -1 {
+                return (rsat - Gs*rw)/(rw*Gs - Gs*rsat)
+            }
+            if e != -1 && rsat != -1 {
+                return e*rw/((1 + e)*rsat - e*rw)
+            }
+            if n != -1 && rsat != -1 {
+                return n*rw/(rsat - n*rw)
+            }
+            if rd != -1 && rsat != -1 {
+                return (rsat - rd)/rd
+            }
             
             print("no function works for getW()")
             return -1
@@ -140,6 +154,11 @@ class WVFunctions {
             if n != -1 && rsat != -1 {
                 return (rsat/rw - n)/(1 - n)
             }
+            //wsat
+            if w != -1 && rsat != -1 {
+                return rsat/((1 + w)*rw - w*rsat)
+            }
+            
             print("no function works for getGs()")
             return -1
         } else {
@@ -177,6 +196,10 @@ class WVFunctions {
             if Gs != -1 && rsat != -1 {
                 return (Gs*rw - rsat)/(rsat - rw)
             }
+            //wsat
+            if w != -1 && rsat != -1 {
+                return w*rsat/((1 + w)*rw - w*rsat)
+            }
             print("no function works for getE()")
             return -1
         } else {
@@ -205,6 +228,10 @@ class WVFunctions {
             //from rsat set
             if Gs != -1 && rsat != -1 {
                 return (rsat/rw - Gs)/(1 - Gs)
+            }
+            //wsat
+            if w != -1 && rsat != -1 {
+                return rsat/(((1 + w)/w)*rw)
             }
             
             print("no functions works for getN()")
@@ -272,6 +299,11 @@ class WVFunctions {
             if rsat != -1 && Gs != -1 {
                 return (rsat - rw)*Gs/(Gs - 1)
             }
+            //from rsat set
+            //wsat
+            if w != -1 && rsat != -1 {
+                return rsat/(1 + w)
+            }
             
             print("no function works for getRd()")
             return -1
@@ -300,6 +332,19 @@ class WVFunctions {
             }
             if Gs != -1 && n != -1 {
                 return ((1 - n)*Gs + n)*rw
+            }
+            //wsat
+            if Gs != -1 && w != -1 {
+                return ((1 + w)/(1 + w*Gs))*Gs*rw
+            }
+            if e != -1 && w != -1 {
+                return (e/w)*((1 + w)/(1 + e))*rw
+            }
+            if n != -1 && w != -1 {
+                return n*((1 + w)/w)*rw
+            }
+            if rd != -1 && w != -1 {
+                return rd*(1 + w)
             }
             print("no function works for getRsat()")
             return -1
