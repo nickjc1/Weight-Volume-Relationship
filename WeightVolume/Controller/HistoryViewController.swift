@@ -15,7 +15,7 @@ class HistoryViewController: UIViewController {
     //declare variable:
     @IBOutlet weak var historyTableView: UITableView!
     let realm = try! Realm()
-    var selectedCell: Int = -1
+    var rowOfSelectedCell: Int = -1
     
     //MARK: - ViewDidLoad
     override func viewDidLoad() {
@@ -48,7 +48,7 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
         cell.delegate = self
         cell.backgroundColor = UIColor.clear
         
-        let date = realm.objects(ResultDetail.self)[indexPath.row].createdTime
+        let date = realm.objects(ResultDetail.self)[realm.objects(ResultDetail.self).count - 1 - indexPath.row].createdTime
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         
@@ -58,7 +58,7 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedCell = indexPath.row
+        rowOfSelectedCell = indexPath.row
         tableView.deselectRow(at: indexPath, animated: true)
         performSegue(withIdentifier: "goToDetails", sender: self)
         
@@ -69,7 +69,8 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
             let destinationVC = segue.destination as! DetailViewController
             destinationVC.delegate = self
             
-            destinationVC.resultDetail = realm.objects(ResultDetail.self)[selectedCell]
+            let numOfDatas = realm.objects(ResultDetail.self).count
+            destinationVC.resultDetail = realm.objects(ResultDetail.self)[numOfDatas - 1 - rowOfSelectedCell]
         }
     }
 }
