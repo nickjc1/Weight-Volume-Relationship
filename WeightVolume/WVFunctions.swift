@@ -139,7 +139,7 @@ class WVFunctions {
                 return (1 + e)*rd/rw
             }
             if n != -1 && rd != -1 {
-                return rd/rw*(1 - n)
+                return rd/(rw*(1 - n))
             }
             if w != -1 && S != -1 && rd != -1 {
                 return rd/(rw - (rd*w/S))
@@ -213,14 +213,14 @@ class WVFunctions {
             print("get into getN()")
             //from r set
             if w != -1 && Gs != -1 && r != -1 {
-                return 1 - r/Gs*rw*(1 + w)
+                return 1 - r/(Gs*rw*(1 + w))
             }
             if S != -1 && Gs != -1 && r != -1 {
                 return (r - Gs*rw)/(S*rw - Gs*rw)
             }
             //from rd set
             if Gs != -1 && rd != -1 {
-                return 1 - rd/Gs*rw
+                return 1 - rd/(Gs*rw)
             }
             if rsat != -1 && rd != -1 {
                 return (rsat - rd)/rw
@@ -253,7 +253,7 @@ class WVFunctions {
                 return (r*w*Gs)/((1 + w)*Gs*rw - r)
             }
             if Gs != -1 && n != -1 && r != -1 {
-                return (r - Gs*rw*(1 - n))/n*rw
+                return (r - Gs*rw*(1 - n))/(n*rw)
             }
             //from rd set
             if Gs != -1 && w != -1 && rd != -1 {
@@ -288,7 +288,7 @@ class WVFunctions {
                 return Gs*rw/(1 + w*Gs/S)
             }
             if e != -1 && w != -1 && S != -1 {
-                return e*S*rw/(1 + e)*w
+                return e*S*rw/((1 + e)*w)
             }
             if rsat != -1 && e != -1 {
                 return rsat - e*rw/(1 + e)

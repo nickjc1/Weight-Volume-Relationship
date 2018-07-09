@@ -15,7 +15,6 @@
 		DFD3443B20C2F73D0040FC7A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD3443A20C2F73D0040FC7A /* AppDelegate.swift */; };
 		DFD3443D20C2F73D0040FC7A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD3443C20C2F73D0040FC7A /* ViewController.swift */; };
 		DFD3444020C2F73D0040FC7A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DFD3443E20C2F73D0040FC7A /* Main.storyboard */; };
-		DFD3444320C2F73D0040FC7A /* WeightVolume.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DFD3444120C2F73D0040FC7A /* WeightVolume.xcdatamodeld */; };
 		DFD3444520C2F73E0040FC7A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DFD3444420C2F73E0040FC7A /* Assets.xcassets */; };
 		DFD3444820C2F73E0040FC7A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DFD3444620C2F73E0040FC7A /* LaunchScreen.storyboard */; };
 		DFD3445020C2F8EB0040FC7A /* InformationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD3444F20C2F8EB0040FC7A /* InformationController.swift */; };
@@ -34,7 +33,6 @@
 		DFD3443A20C2F73D0040FC7A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DFD3443C20C2F73D0040FC7A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		DFD3443F20C2F73D0040FC7A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		DFD3444220C2F73D0040FC7A /* WeightVolume.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WeightVolume.xcdatamodel; sourceTree = "<group>"; };
 		DFD3444420C2F73E0040FC7A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DFD3444720C2F73E0040FC7A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DFD3444920C2F73F0040FC7A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -102,7 +100,6 @@
 				DFD3445920C33F1C0040FC7A /* Support files */,
 				DFD3444620C2F73E0040FC7A /* LaunchScreen.storyboard */,
 				DFD3444920C2F73F0040FC7A /* Info.plist */,
-				DFD3444120C2F73D0040FC7A /* WeightVolume.xcdatamodeld */,
 			);
 			path = WeightVolume;
 			sourceTree = "<group>";
@@ -273,7 +270,6 @@
 				DFD3445020C2F8EB0040FC7A /* InformationController.swift in Sources */,
 				DFD3443B20C2F73D0040FC7A /* AppDelegate.swift in Sources */,
 				DF37FBD720D8495C00A6C85B /* HistoryViewController.swift in Sources */,
-				DFD3444320C2F73D0040FC7A /* WeightVolume.xcdatamodeld in Sources */,
 				DFC7B29620D9880800A2439B /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -474,19 +470,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		DFD3444120C2F73D0040FC7A /* WeightVolume.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				DFD3444220C2F73D0040FC7A /* WeightVolume.xcdatamodel */,
-			);
-			currentVersion = DFD3444220C2F73D0040FC7A /* WeightVolume.xcdatamodel */;
-			path = WeightVolume.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = DFD3442F20C2F73D0040FC7A /* Project object */;
 }
