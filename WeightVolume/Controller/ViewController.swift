@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import ChameleonFramework
 
 class ViewController: UIViewController, UITextFieldDelegate {
 
@@ -17,9 +18,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var stackView: UIStackView!
     
     @IBOutlet weak var unitWeightWaterPicker: UIPickerView!
-    let unitWeightWater = [9.8, 62.4]
+    let unitWeightWater = [62.4, 9.8]
     @IBOutlet weak var unit: UILabel!
-    let unitList = ["kN/m3", "lb/ft3"]
+    let unitList = ["lb/ft3", "kN/m3"]
     @IBOutlet var messageTextFields: [UITextField]!
     
     // MARK: - viewDidLoad()
@@ -57,7 +58,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     // MARK: - button pressed
-    
     @IBAction func infoButtonPressed(_ sender: UIButton) {
         performSegue(withIdentifier: "goToInfo", sender: self)
     }
@@ -84,12 +84,13 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
 }
 
- // MARK: - calculating
+// MARK: - calculating
 
 extension ViewController {
     
     @IBAction func submitButtonPressed(_ sender: UIButton) {
         //first check if all textfields are blank.
+        //second check if input is valid.
         //if so, nothing will happen, else start calculating and save results
         var textFieldsAreEmpty = true
         for i in 0..<messageTextFields.count {
@@ -102,11 +103,15 @@ extension ViewController {
             //Convert String to double
             var data = [Double](repeating: 0, count: messageTextFields.count)
             for i in 0..<messageTextFields.count {
+                
                 if messageTextFields[i].text == "" {
                     data[i] = -1
-                } else {
-                    data[i] = Double(messageTextFields[i].text!)!
+                    continue
                 }
+                guard let mydata = Double(messageTextFields[i].text!) else {
+                    return
+                }
+                data[i] = mydata
             }
             
             //create a instance of WVFunctions and start calculating:
@@ -158,7 +163,7 @@ extension ViewController {
                 //if any field did not get the result, turns it to yellow
                 for tf in messageTextFields {
                     if tf.text == "-1.0" {
-                        tf.backgroundColor = UIColor.yellow
+                        tf.backgroundColor = UIColor.flatSand()
                         tf.text = ""
                     }
                 }
