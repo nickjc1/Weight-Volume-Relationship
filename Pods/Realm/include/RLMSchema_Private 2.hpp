@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////
 //
-// Copyright 2017 Realm Inc.
+// Copyright 2015 Realm Inc.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -16,14 +16,16 @@
 //
 ////////////////////////////////////////////////////////////////////////////
 
-#import "RLMSyncPermission.h"
+#import "RLMSchema_Private.h"
 
-#import "sync/sync_permission.hpp"
+#import <memory>
 
-@interface RLMSyncPermission ()
+namespace realm {
+    class Schema;
+    class ObjectSchema;
+}
 
-- (instancetype)initWithPermission:(realm::Permission)permission;
-
-- (realm::Permission)rawPermission;
-
+@interface RLMSchema ()
++ (instancetype)dynamicSchemaFromObjectStoreSchema:(realm::Schema const&)objectStoreSchema;
+- (realm::Schema)objectStoreCopy;
 @end

@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////
 //
-// Copyright 2014 Realm Inc.
+// Copyright 2018 Realm Inc.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -16,29 +16,19 @@
 //
 ////////////////////////////////////////////////////////////////////////////
 
-#import <Foundation/Foundation.h>
+namespace realm {
+class Table;
+class TableView;
+template<typename> class BasicRowExpr;
+using RowExpr = BasicRowExpr<Table>;
+struct VersionID;
 
-NS_ASSUME_NONNULL_BEGIN
+class AuditInterface {
+public:
+    virtual ~AuditInterface() {}
 
-@class RLMRealm;
-@class RLMSchema;
-@class RLMObjectSchema;
-
-/// :nodoc:
-@interface RLMObjectBase : NSObject
-
-@property (nonatomic, readonly, getter = isInvalidated) BOOL invalidated;
-
-- (instancetype)init NS_DESIGNATED_INITIALIZER;
-
-+ (NSString *)className;
-
-// Returns whether the class is included in the default set of classes managed by a Realm.
-+ (BOOL)shouldIncludeInDefaultSchema;
-
-+ (nullable NSString *)_realmObjectName;
-+ (nullable NSDictionary<NSString *, NSString *> *)_realmColumnNames;
-
-@end
-
-NS_ASSUME_NONNULL_END
+    virtual void record_query(realm::VersionID, realm::TableView const&) = 0;
+    virtual void record_read(realm::VersionID, realm::RowExpr) = 0;
+    virtual void record_write(realm::VersionID, realm::VersionID) = 0;
+};
+}

@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////
 //
-// Copyright 2017 Realm Inc.
+// Copyright 2015 Realm Inc.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -16,12 +16,28 @@
 //
 ////////////////////////////////////////////////////////////////////////////
 
-#import <Foundation/Foundation.h>
+#ifndef REALM_VALUE_EXPRESSION_HPP
+#define REALM_VALUE_EXPRESSION_HPP
 
-#import "RLMResults.h"
+#include "parser.hpp"
+#include "query_builder.hpp"
 
-@class RLMSyncPermission;
+namespace realm {
+namespace parser {
 
-// A private subclass of `RLMResults`.
-@interface RLMSyncPermissionResults : RLMResults<RLMSyncPermission *>
-@end
+struct ValueExpression
+{
+    const parser::Expression* value;
+    query_builder::Arguments* arguments;
+    std::function<Table *()> table_getter;
+
+    ValueExpression(Query& query, query_builder::Arguments* args, const parser::Expression* v);
+    bool is_null();
+    template <typename RetType>
+    RetType value_of_type_for_query();
+};
+
+} // namespace parser
+} // namespace realm
+
+#endif // REALM_VALUE_EXPRESSION_HPP

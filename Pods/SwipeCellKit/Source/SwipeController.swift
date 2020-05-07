@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 protocol SwipeControllerDelegate: class {
     
@@ -73,7 +74,7 @@ class SwipeController: NSObject {
         
         switch gesture.state {
         case .began:
-            if let swipeable = scrollView?.swipeables.first(where: { $0.state == .dragging }) as? UIView, swipeable != self.swipeable {
+            if let swipeable = scrollView?.swipeables.first(where: { $0.state == .dragging }) as? UIView, self.swipeable != nil, swipeable != self.swipeable! {
                 return
             }
             
@@ -92,7 +93,7 @@ class SwipeController: NSObject {
             
             if swipeable.state == .animatingToCenter {
                 let swipedCell = scrollView?.swipeables.first(where: { $0.state == .dragging || $0.state == .left || $0.state == .right }) as? UIView
-                if let swipedCell = swipedCell, swipedCell != self.swipeable {
+                if let swipedCell = swipedCell, self.swipeable != nil, swipedCell != self.swipeable! {
                     return
                 }
             }
@@ -106,7 +107,7 @@ class SwipeController: NSObject {
                 target.center.x = gesture.elasticTranslation(in: target,
                                                              withLimit: .zero,
                                                              fromOriginalCenter: CGPoint(x: originalCenter, y: 0)).x
-                swipeable.actionsView?.visibleWidth = abs(swipeable.frame.minX)
+                swipeable.actionsView?.visibleWidth = abs((swipeable as Swipeable).frame.minX)
                 scrollRatio = elasticScrollRatio
                 return
             }
@@ -201,10 +202,12 @@ class SwipeController: NSObject {
         
         var contentEdgeInsets = UIEdgeInsets.zero
         if let visibleTableViewRect = delegate?.swipeController(self, visibleRectFor: scrollView) {
-            let visibleSwipeableRect = swipeable.frame.intersection(visibleTableViewRect)
+            
+            let frame = (swipeable as Swipeable).frame
+            let visibleSwipeableRect = frame.intersection(visibleTableViewRect)
             if visibleSwipeableRect.isNull == false {
-                let top = visibleSwipeableRect.minY > swipeable.frame.minY ? max(0, visibleSwipeableRect.minY - swipeable.frame.minY) : 0
-                let bottom = max(0, swipeable.frame.size.height - visibleSwipeableRect.size.height - top)
+                let top = visibleSwipeableRect.minY > frame.minY ? max(0, visibleSwipeableRect.minY - frame.minY) : 0
+                let bottom = max(0, frame.size.height - visibleSwipeableRect.size.height - top)
                 contentEdgeInsets = UIEdgeInsets(top: top, left: 0, bottom: bottom, right: 0)
             }
         }
@@ -342,7 +345,7 @@ class SwipeController: NSObject {
 extension SwipeController: UIGestureRecognizerDelegate {
     func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
         if gestureRecognizer == tapGestureRecognizer {
-            if UIAccessibilityIsVoiceOverRunning() {
+            if UIAccessibility.isVoiceOverRunning {
                 scrollView?.hideSwipeables()
             }
             
@@ -429,6 +432,7 @@ extension SwipeController: SwipeActionsViewDelegate {
                     }
                 }) { [weak self] _ in
                     self?.actionsContainerView?.mask = nil
+                    self?.resetSwipe()
                     self?.reset()
                 }
             case .reset:
@@ -476,6 +480,15 @@ extension SwipeController: SwipeActionsViewDelegate {
         }
         
         delegate?.swipeController(self, didEndEditingSwipeableFor: actionView.orientation)
+    }
+    
+    func resetSwipe() {
+        guard let swipeable = self.swipeable, let actionsContainerView = self.actionsContainerView else { return }
+        
+        let targetCenter = self.targetCenter(active: false)
+        
+        actionsContainerView.center = CGPoint(x: targetCenter, y: actionsContainerView.center.y)
+        swipeable.actionsView?.visibleWidth = abs(actionsContainerView.frame.minX)
     }
     
     func showSwipe(orientation: SwipeActionsOrientation, animated: Bool = true, completion: ((Bool) -> Void)? = nil) {
